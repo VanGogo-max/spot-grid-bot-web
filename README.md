@@ -16,8 +16,7 @@
 
 
 1. Инсталирай **Termux** от F-Droid
-2. Създай нова сесия → избери **Ubuntu**.
-3. Отвори терминал и изпълни:
+2. Отвори Termux и изпълни:
    ```bash
    sudo apt update && sudo apt install git python3-pip -y
    git clone https://github.com/твоя_потребител/spot_grid_bot.git
