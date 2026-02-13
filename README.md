@@ -1,6 +1,6 @@
 # 🌍 # 📊 Spot Grid Bot за Android (Termux)
 
-Автоматизиран бот за търговия на **MEXC, Gate.io, KuCoin, CoinEx** — без KYC, с риск 1%, цел $0.20–$0.80/ден.
+Автоматизиран бот за търговия на **MEXC, Gate.io, KuCoin, CoinEx** — без KYC, с риск 1%, прави сделки на всеки ~20 минути.
 
 ---
 
