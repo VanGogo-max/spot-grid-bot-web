@@ -25,7 +25,7 @@ echo -e "${GREEN}[2/5] Инсталиране на Python и Git...${NC}"
 apt install -y python3 python3-pip git wget > /dev/null 2>&1
 
 # 3. Клониране на репото (ако липсва)
-BOT_DIR="$HOME/-spot-grid-bot-android-"
+BOT_DIR="$HOME/spot-grid-bot-android"
 if [ ! -d "$BOT_DIR" ]; then
     echo -e "${GREEN}[3/5] Клониране на репото...${NC}"
     git clone https://github.com/VanGogo-max/-spot-grid-bot-android-.git "$BOT_DIR" > /dev/null 2>&1
