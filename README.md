@@ -23,3 +23,13 @@
    git clone https://github.com/твоя_потребител/spot_grid_bot.git
    cd spot_grid_bot
    pip3 install -r requirements.txt
+   ## 💰 Дарения в криптовалута
+
+Ако ботът ти помогне, можеш да подкрепиш развитието с дарение:
+
+| Мрежа | Адрес |
+|-------|-------|
+| **USDT (TRC-20)** МРЕЖА ТРОН| TPrmesvfr25G7xqCpFHoHLJz78M7i4YoBC |
+| **BTC** | bc1qmh03auf9rnv82gp4eqeena66qn6svvck9f7ywe |
+
+📌 Използвай **некастодиален портфейл** (напр. Trust Wallet, Exodus).
