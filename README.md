@@ -22,7 +22,8 @@
 git clone https://github.com/VanGogo-max/spot-grid-bot-android.git
 cd spot-grid-bot-android
 pip install -r requirements.txt
-chmod +x run_bot.sh
+chmod +x run_bot.sh'''
+---
    ## 💰 Дарения в криптовалута
 
 Ако ботът ти помогне, можеш да подкрепиш развитието с дарение:
