@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Регистрация — GridPulse{% endblock %}
+
+{% block content %}
+    <section>
+        <h1>📝 Регистрация</h1>
+        
+        <div class="card" style="max-width: 500px;">
+            <form method="POST" action="{{ url_for('register') }}">
+                <div>
+                    <label for="email">📧 Имейл</label>
+                    <input type="email" id="email" name="email" required placeholder="example@email.com">
+                </div>
+                
+                <div>
+                    <label for="password">🔒 Парола</label>
+                    <input type="password" id="password" name="password" required placeholder="Минимум 8 символа">
+                </div>
+                
+                <div>
+                    <label for="referral">👥 Реферален код (по избор)</label>
+                    <input type="text" id="referral" name="referral" placeholder="Ако някой ви е препоръчал">
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%; padding: 15px;">
+                    Регистрирай се
+                </button>
+            </form>
+            
+            <p style="margin-top: 20px; text-align: center;">
+                Вече имате акаунт? <a href="{{ url_for('login') }}" style="color: #3498db;">Влезте тук</a>
+            </p>
+        </div>
+    </section>
+{% endblock %}
