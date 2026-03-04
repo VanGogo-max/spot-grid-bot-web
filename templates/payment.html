@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Плащане — GridPulse{% endblock %}
+
+{% block content %}
+    <section>
+        <h1>💳 Плащане за Абонамент</h1>
+        
+        <div class="card" style="margin-bottom: 30px;">
+            <h3>💰 Месечна такса: ${{ fee }}</h3>
+            <p>Плащането се извършва в <strong>USDT (Polygon мрежа)</strong></p>
+        </div>
+        
+        <div class="card" style="margin-bottom: 30px;">
+            <h3>📍 Адрес за плащане</h3>
+            <div style="background: #1a1a1a; padding: 20px; border-radius: 5px; margin-top: 15px;">
+                <p id="paymentAddress" style="font-family: monospace; font-size: 14px; word-break: break-all; color: #3498db;">
+                    {{ payment_address }}
+                </p>
+            </div>
+            <button onclick="copyAddress()" class="btn" style="margin-top: 10px; width: 100%;">
+                📋 Копирай адрес
+            </button>
+        </div>
+        
+        <div class="card" style="margin-bottom: 30px;">
+            <h3>📝 Инструкции</h3>
+            <ol style="margin-left: 20px; line-height: 1.8;">
+                <li>Отворете вашия крипто портфейл (напр. Trust Wallet, MetaMask)</li>
+                <li>Изберете <strong>USDT</strong> в <strong>Polygon мрежа</strong></li>
+                <li>Изпратете точно <strong>${{ fee }}</strong> към горния адрес</li>
+                <li>Копирайте <strong>хеша на транзакцията</strong> (Tx Hash)</li>
+                <li>Въведете го в полето по-долу</li>
+            </ol>
+        </div>
+        
+        <div class="card">
+            <h3>🔍 Въведете хеш на транзакцията</h3>
+            <form method="POST" action="{{ url_for('payment') }}">
+                <div>
+                    <label for="tx_hash">Хеш на транзакцията (Tx Hash)</label>
+                    <input type="text" id="tx_hash" name="tx_hash" required placeholder="0x..." style="width: 100%;">
+                    <p style="font-size: 12px; color: #888; margin-top: 5px;">
+                        Пример: 0x1234567890abcdef...
+                    </p>
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%; padding: 15px; margin-top: 20px;">
+                    ✅ Потвърди плащане
+                </button>
+            </form>
+        </div>
+    </section>
+    
+    <script>
+        function copyAddress() {
+            const address = document.getElementById('paymentAddress').textContent;
+            navigator.clipboard.writeText(address).then(() => {
+                alert('✅ Адресът е копиран в клипборда!');
+            });
+        }
+    </script>
+{% endblock %}
