@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Статус на Плащане — GridPulse{% endblock %}
+
+{% block content %}
+    <section>
+        <h1>💳 Статус на Плащане</h1>
+        
+        <div class="card" style="margin-bottom: 30px;">
+            <h3>📊 Информация за плащане</h3>
+            <table style="width: 100%; margin-top: 15px;">
+                <tr>
+                    <td style="padding: 10px 0;"><strong>Сума:</strong></td>
+                    <td style="padding: 10px 0;">${{ payment.amount }}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px 0;"><strong>Хеш на транзакцията:</strong></td>
+                    <td style="padding: 10px 0; font-family: monospace; font-size: 12px; word-break: break-all;">
+                        {{ payment.tx_hash }}
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px 0;"><strong>Статус:</strong></td>
+                    <td style="padding: 10px 0;">
+                        {% if payment.status == 'confirmed' %}
+                            <span style="color: #2ecc71; font-weight: bold;">✅ Потвърдено</span>
+                        {% elif payment.status == 'pending' %}
+                            <span style="color: #f39c12; font-weight: bold;">⏳ Изчаква потвърждение</span>
+                        {% else %}
+                            <span style="color: #e74c3c; font-weight: bold;">❌ Неуспешно</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px 0;"><strong>Дата:</strong></td>
+                    <td style="padding: 10px 0;">{{ payment.created_at }}</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="card" style="margin-bottom: 30px; text-align: center;">
+            <h3>{{ status_message }}</h3>
+            {% if payment.status == 'confirmed' %}
+                <p style="font-size: 18px; color: #2ecc71; margin-top: 15px;">
+                    🎉 Абонаментът ви е активиран!
+                </p>
+                <a href="{{ url_for('dashboard') }}" class="btn" style="margin-top: 20px;">
+                    📊 Към панела
+                </a>
+            {% elif payment.status == 'pending' %}
+                <p style="font-size: 16px; color: #f39c12; margin-top: 15px;">
+                    ⏳ Моля, изчакайте потвърждение от блокчейна (обикновено 2-5 минути)
+                </p>
+                <button onclick="location.reload()" class="btn" style="margin-top: 20px;">
+                    🔄 Опресни статуса
+                </button>
+            {% else %}
+                <p style="font-size: 16px; color: #e74c3c; margin-top: 15px;">
+                    ❌ Плащането не е потвърдено. Моля, проверете хеша.
+                </p>
+                <a href="{{ url_for('payment') }}" class="btn" style="margin-top: 20px; background: #e74c3c;">
+                    🔄 Опитай отново
+                </a>
+            {% endif %}
+        </div>
+        
+        <div class="card">
+            <h3>ℹ️ Какво следва?</h3>
+            <ul style="margin-left: 20px; line-height: 1.8;">
+                <li>Ако плащането е потвърдено → абонаментът ви е активиран за 30 дни</li>
+                <li>Ако изчаквате → обикновено това отнема 2-5 минути</li>
+                <li>Ако е неуспешно → проверете хеша и опитайте отново</li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
